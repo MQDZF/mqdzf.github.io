@@ -1,20 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
-<style>
- .text1 {
-     color: #64656f;
- text-align: center;
- }
-</style>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐，孙少华！</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffcce60%, #ffb3e6 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-title {
+            font-size: 3.5rem;
+            color: #ff66b2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .name-highlight {
+            color: #ff4081;
+            font-weight: bold;
+            font-size: 4rem;
+            text-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+        }
+
+        .birthday-message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin: 30px 0;
+            color: #555;
+ padding: 0 20px;
+        }
+
+        .birthday-wishes {
+            font-size: 1.2rem;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 15px;
+            line-height: 1.8;
+        }
+
+        .cake-container {
+            margin: 30px auto;
+            width: 200px;
+            height: 150px;
+            position: relative;
+        }
+
+        .cake {
+            width: 180px;
+            height: 80px;
+            background: #ffb6c1;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 20px;
+            background: #ff8fa3;
+            border-radius: 10px;
+            top: -10px;
+            left: -10px;
+        }
+
+        .candle {
+            width: 10px;
+            height: 40px;
+            background: #ffcc00;
+            position: absolute;
+            top: -50px;
+            left: 85px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .flame {
+            width: 15px;
+            height: 25px;
+            background: #ff9900;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -75px;
+            left: 82.5px;
+            animation: flicker 1.5s infinite alternate;
+            box-shadow: 0 0 15px 5px rgba(255, 153, 0, 0.5);
+        }
+
+        .balloons {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .balloon {
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 10px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon:before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.2);
+            top: 60px;
+            left: 24px;
+        }
+
+        .balloon:nth-child(1) {
+            background: #ff4081;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background: #ff9800;
+            animation-delay: 0.5s;
+        }
+
+        .balloon:nth-child(3) {
+            background: #4caf50;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(4) {
+            background: #2196f3;
+            animation-delay: 1.5s;
+        }
+
+        .balloon:nth-child(5) {
+            background: #9c27b0;
+            animation-delay: 2s;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f44336;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #ff4081, #ff9800);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 64, 129, 0.4);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .birthday-title {
+                font-size: 2.5rem;
+            }
+            
+            .name-highlight {
+                font-size: 3rem;
+            }
+ .birthday-message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<br>
-<br>
-<br>
-<h1 class="text1"> 相见时难别亦难 </h1>
-<h1 class="text1"> 东风无力百花残 </h1>
+    <div class="container">
+        <h1 class="birthday-title">生日快乐，<span class="name-highlight">孙少华</span>！</h1>
+        
+        <div class="birthday-message">
+            愿你的生日充满欢笑和美好回忆，愿你的每一天都像今天一样特别！
+        </div>
+ <div class="cake-container">
+            <div class="cake">
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+ <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        
+        <div class="birthday-wishes">
+ <p>在这个特别的日子里，</p>
+            <p>愿所有美好的事物都围绕着你，</p>
+            <p>愿你的梦想成真，幸福永驻！</p>
+            <p>祝你生日快乐，永远美丽！</p>
+        </div>
+        
+        <button class="btn" onclick="createConfetti()">点击撒花庆祝</button>
+        
+        <div class="footer">
+            <p>特别为你制作的生日祝福 | 愿你拥有美好的一天</p>
+        </div>
+    </div>
+
+    <script>
+        // 创建五彩纸屑效果 function createConfetti() {
+            const colors = ['#ff4081', '#ff9800', '#4caf50', '#2196f3', '#9c27b0', '#ffeb3b'];
+            const container = document.querySelector('.container');
+ for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                
+                document.body.appendChild(confetti);
+ // 移除纸屑元素以优化性能
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // 页面加载时自动创建一些纸屑
+        window.addEventListener('load', () => {
+            createConfetti();
+        }); </script>
 </body>
 </html>
